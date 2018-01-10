@@ -6,7 +6,6 @@ const mainState = {
   create: function () {
     //game.stage.backgroundColor = '#2d2d2d';
 
-
     game.add.tileSprite(0,0,800,600,'background');
     this.shipShot = game.add.audio('playerShoot');
     this.shipMove = game.add.audio('playerMove');
@@ -256,8 +255,18 @@ const gamewinState = {
     game.input.onDown.add(() => { game.state.start('main'); });
   }
 };
+const startScreen = {
+  preload: function () {
+    game.load.image('startscreen', 'assets/startScreen.png');
+  },
+  create: function () {
+    game.add.tileSprite(0,0,800,600,'startscreen');
+    game.input.onDown.add(() => { game.state.start('main'); });
+  }
+};
 const game = new Phaser.Game(800, 600);
+game.state.add('startScreen',startScreen);
 game.state.add('main', mainState);
 game.state.add('gameover', gameoverState);
 game.state.add('gamewin', gamewinState);
-game.state.start('main');
+game.state.start('startScreen');
