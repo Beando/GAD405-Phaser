@@ -101,7 +101,7 @@ enemyFires: function (){
           enemyBullet.reset(shooter.body.x, shooter.body.y);
 
           game.physics.arcade.moveToObject(enemyBullet,this.ship,120);
-          firingTimer = game.time.now + 2000;
+          firingTimer = game.time.now + 700;
       }
 
   },
@@ -175,7 +175,9 @@ gameWin: function () {
   },
 
   preload: function () {
-
+    game.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
+    game.scale.pageAlignHorizontally = true;
+    game.scale.pageAlignVertically = true;
     game.load.image('ship', 'assets/ship.png');
     game.load.image('enemy', 'assets/enemy1.png');
     game.load.image('bullet', 'assets/bullet.png');
@@ -205,7 +207,7 @@ gameWin: function () {
     this.ship.body.velocity.y = 0;
     this.aliens.forEach(
       (alien) => {
-        alien.body.position.x = alien.body.position.x - (Math.sin(game.time.now/100)) - 0.6;
+        alien.body.position.x = alien.body.position.x - (Math.sin(game.time.now/100)) - 0.4;
         alien.body.position.y = alien.body.position.y + (1.3*(Math.sin(game.time.now/100)));
         //console.log(alien.body.position.y)
         if (alien.x  > game.y) { this.gameOver(); }
@@ -232,6 +234,9 @@ gameWin: function () {
 const gameoverState = {
   preload: function () {
     game.load.image('gameover', 'assets/gameover.png');
+    game.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
+    game.scale.pageAlignHorizontally = true;
+    game.scale.pageAlignVertically = true;
   },
   create: function () {
     const gameOverImg = game.cache.getImage('gameover');
@@ -239,12 +244,15 @@ const gameoverState = {
       game.world.centerX - gameOverImg.width / 2,
       game.world.centerY - gameOverImg.height / 2,
       'gameover');
-    game.input.onDown.add(() => { game.state.start('main'); });
+    game.input.onDown.add(() => { game.state.start('startScreen'); });
   }
 };
 const gamewinState = {
   preload: function () {
     game.load.image('gamewin', 'assets/gameover1.png');
+    game.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
+    game.scale.pageAlignHorizontally = true;
+    game.scale.pageAlignVertically = true;
   },
   create: function () {
     const gameWinImg = game.cache.getImage('gamewin');
@@ -252,12 +260,15 @@ const gamewinState = {
       game.world.centerX - gameWinImg.width / 2,
       game.world.centerY - gameWinImg.height / 2,
       'gamewin');
-    game.input.onDown.add(() => { game.state.start('main'); });
+    game.input.onDown.add(() => { game.state.start('startScreen'); });
   }
 };
 const startScreen = {
   preload: function () {
     game.load.image('startscreen', 'assets/startScreen.png');
+    game.scale.scaleMode = Phaser.ScaleManager.NO_SCALE;
+    game.scale.pageAlignHorizontally = true;
+    game.scale.pageAlignVertically = true;
   },
   create: function () {
     game.add.tileSprite(0,0,800,600,'startscreen');
