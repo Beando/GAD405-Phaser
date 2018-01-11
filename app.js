@@ -48,13 +48,12 @@ const mainState = {
     this.explosion = this.game.add.sprite(0, 0, 'boom');
     this.explosion.exists = false;
     this.explosion.visible = false;
-    // this.explosion.frame = 6; // show one frame of the spritesheet
     this.explosion.anchor.x = 0.5;
     this.explosion.anchor.y = 0.5;
     this.explosion.animations.add('boom');
 
     this.lives = game.add.group();
-    game.add.text(game.world.width - 250, 10, 'Lives : ', { font: '34px Arial', fill: '#fff' });
+    game.add.text(game.world.width - 250, 10, 'Lives : ', { font: '30px Arial', fill: '#fff' });
 
     for (let i = 0; i < 3; i++)
     {
@@ -70,7 +69,7 @@ const mainState = {
     }
 
     this.score = 0;
-    this.scoreDisplay = game.add.text(20, 20, `Score: ${this.score} \nHighScore: ${this.highScore}`, { font: '30px Arial', fill: '#ffffff' });
+    this.scoreDisplay = game.add.text(20, 20, `Score: ${this.score} \nHighScore: ${this.highScore}`, { font: '30px Arial', fill: '#fff' });
 
 
 
